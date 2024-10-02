@@ -1,0 +1,49 @@
+import turtle
+import random
+
+def dibujar_flor(tortuga, tamano, color):
+    tortuga.fillcolor(color)
+    tortuga.begin_fill()
+    for _ in range(12):
+        tortuga.circle(tamano)
+        tortuga.left(30)
+    tortuga.end_fill()
+
+def dibujar_tallo(tortuga, tamano):
+    tortuga.color("green")
+    tortuga.width(5)
+    tortuga.forward(tamano)
+
+def dibujar_hojas(tortuga, tamano):
+    tortuga.color("lightgreen")
+    tortuga.width(3)
+    tortuga.circle(tamano)
+    tortuga.left(60)
+    tortuga.circle(tamano)
+    tortuga.left(60)
+    tortuga.circle(tamano)
+
+def dibujar_flores(tortuga, cantidad, tamano, espacio):
+    for _ in range(cantidad):
+        tortuga.penup()
+        tortuga.goto(random.randint(-250, 250), random.randint(-200, 200))
+        tortuga.pendown()
+        dibujar_flor(tortuga, tamano, "yellow")
+        dibujar_tallo(tortuga, 50)
+        dibujar_hojas(tortuga, 20)
+        tortuga.penup()
+        tortuga.forward(espacio)
+        tortuga.pendown()
+
+ventana = turtle.Screen()
+ventana.bgcolor("sky blue")
+ventana.setup(width=800, height=600)
+
+tortuga = turtle.Turtle()
+tortuga.speed(0)
+
+dibujar_flores(tortuga, 10, 20, 50)
+
+turtle.done()
+```
+
